@@ -59,7 +59,7 @@ export default {
                     this.email,
                     this.password
                 );
-                alert("Inicio de sesión exitoso");
+                // alert("Inicio de sesión exitoso");
                 this.$router.push("/presentation"); // Cambia esto según tu ruta de destino
             } catch (error) {
                 this.errorMessage = error.message;

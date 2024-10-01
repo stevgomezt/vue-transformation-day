@@ -149,7 +149,7 @@
     </div>
 
         <!-- Barra de tiempo en ejecución -->
-        <div class="timeRunning" ref="runningTime"></div>
+        <!-- <div class="timeRunning" ref="runningTime"></div> -->
     </div>
 </template>
 
