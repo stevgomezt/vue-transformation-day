@@ -78,7 +78,7 @@ export default {
 .container-login-form {
     max-width: 700px;
     width: 700px;
-    margin-top: 50px;
+    margin-top: 200px;
     margin-left: auto; /* Alinea el formulario a la derecha */
     text-align: center;
     background: rgb(255, 255, 255);
@@ -160,6 +160,12 @@ export default {
 
 .btn:hover {
     background-color: #522db2; /* Cambia el fondo al púrpura */
+    color: white; /* Cambia el color del texto a blanco */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al pasar el mouse */
+}
+
+.btn:active {
+    background-color: #522db2 !important; /* Cambia el fondo al púrpura */
     color: white; /* Cambia el color del texto a blanco */
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al pasar el mouse */
 }

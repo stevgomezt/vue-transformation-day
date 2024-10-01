@@ -138,13 +138,15 @@
 
         <!-- Flechas de navegación -->
         <div class="arrows">
-            <button class="prev" ref="prevBtn">
-                <i class="fas fa-arrow-left"></i>
-            </button>
-            <button class="next" ref="nextBtn">
-                <i class="fas fa-arrow-right"></i>
-            </button>
-        </div>
+        <button class="prev" ref="prevBtn">
+            <!-- Icono de flecha izquierda -->
+            <font-awesome-icon :icon="['fas', 'arrow-left']" />
+        </button>
+        <button class="next" ref="nextBtn">
+            <!-- Icono de flecha derecha -->
+            <font-awesome-icon :icon="['fas', 'arrow-right']" />
+        </button>
+    </div>
 
         <!-- Barra de tiempo en ejecución -->
         <div class="timeRunning" ref="runningTime"></div>
