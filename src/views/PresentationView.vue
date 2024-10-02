@@ -47,40 +47,33 @@
                 <div class="content">
                     <div class="title">IA</div>
                     <div class="name">Generativa</div>
-                    <div class="des">Lorem ipsum dolor sit amet...</div>
+                    <!-- <div class="des">Lorem ipsum dolor sit amet...</div>
                     <div class="btn">
                         <button>Ver más</button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div
                 class="item"
                 :style="{
-                    backgroundImage: `url(${require('../assets/1.png')})`,
+                    backgroundImage: `url(${require('../assets/op1.png')})`,
                 }"
-            >
-                <div class="content">
-                    <div class="title">Investigación de</div>
-                    <div class="name">Mercados</div>
-                    <div class="des">Lorem ipsum dolor sit amet...</div>
-                    <div class="btn">
-                        <button>Ver más</button>
-                    </div>
-                </div>
-            </div>
+            ></div>
             <div
                 class="item"
                 :style="{
-                    backgroundImage: `url(${require('../assets/2.png')})`,
+                    backgroundImage: `url(${require('../assets/op2.png')})`,
                 }"
             >
                 <div class="content">
-                    <div class="title">PAC</div>
-                    <div class="name">V2</div>
-                    <div class="des">Lorem ipsum dolor sit amet...</div>
+                    <div class="title">
+                        La migracion generacional redefine el mercado
+                    </div>
+                    <div class="name">ANTICIPARSE ES LA VENTAJA</div>
+                    <!-- <div class="des">Lorem ipsum dolor sit amet...</div>
                     <div class="btn">
                         <button>Ver más</button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div
@@ -98,10 +91,10 @@
                         Inteligente del <br />
                         Cliente
                     </div>
-                    <div class="des">Lorem ipsum dolor sit amet...</div>
+                    <!-- <div class="des">Lorem ipsum dolor sit amet...</div>
                     <div class="btn">
                         <button>Ver más</button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div
@@ -113,10 +106,10 @@
                 <div class="content">
                     <div class="title">Smart</div>
                     <div class="name">Communication</div>
-                    <div class="des">Lorem ipsum dolor sit amet...</div>
+                    <!-- <div class="des">Lorem ipsum dolor sit amet...</div>
                     <div class="btn">
                         <button>Ver más</button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div
@@ -128,10 +121,10 @@
                 <div class="content">
                     <div class="title">Modelos de Analítica</div>
                     <div class="name">Predictiva</div>
-                    <div class="des">Lorem ipsum dolor sit amet...</div>
+                    <!-- <div class="des">Lorem ipsum dolor sit amet...</div>
                     <div class="btn">
                         <button>Ver más</button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -307,15 +300,16 @@ onMounted(() => {
 }
 
 .list .item .content {
-    position: absolute;
-    top: 50%;
-    left: 100px;
-    transform: translateY(-50%);
+    position: fixed; /* Cambiado de absolute a fixed */
+    top: 20px; /* Ajusta la distancia desde la parte superior */
+    left: 50%; /* Centrado horizontalmente */
+    transform: translate(-50%, 0); /* Ajusta el centrado */
     color: #fff;
     display: none;
     background-color: #0000009e;
     padding: 20px;
     border-radius: 25px;
+    width: max-content;
 }
 
 .list .item:nth-child(2) .content {
@@ -323,7 +317,7 @@ onMounted(() => {
 }
 
 .content .title {
-    font-size: 100px;
+    font-size: 45px;
     text-transform: uppercase;
     color: #522db2;
     font-weight: bold;
@@ -333,7 +327,7 @@ onMounted(() => {
 }
 
 .content .name {
-    font-size: 100px;
+    font-size: 35px;
     text-transform: uppercase;
     font-weight: bold;
     line-height: 1;
