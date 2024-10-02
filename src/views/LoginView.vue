@@ -40,33 +40,29 @@
     </div>
 </template>
 
-<script>
+<script setup>
+import { ref } from "vue";
+import { useRouter } from "vue-router";
 import { auth } from "../firebase.js";
 
-export default {
-    name: "Login",
-    data() {
-        return {
-            email: "",
-            password: "",
-            errorMessage: "",
-        };
-    },
-    methods: {
-        async login() {
-            try {
-                await auth.signInWithEmailAndPassword(
-                    this.email,
-                    this.password
-                );
-                // alert("Inicio de sesión exitoso");
-                this.$router.push("/presentation"); // Cambia esto según tu ruta de destino
-            } catch (error) {
-                this.errorMessage = error.message;
-                console.error("Error durante el inicio de sesión:", error);
-            }
-        },
-    },
+// Definir los estados reactivamente
+const email = ref("");
+const password = ref("");
+const errorMessage = ref("");
+
+// Instanciar el router
+const router = useRouter();
+
+// Definir la función de login
+const login = async () => {
+    try {
+        await auth.signInWithEmailAndPassword(email.value, password.value);
+        // Redirigir a la ruta de destino después del login exitoso
+        router.push("/presentation");
+    } catch (error) {
+        errorMessage.value = error.message;
+        console.error("Error durante el inicio de sesión:", error);
+    }
 };
 </script>
 

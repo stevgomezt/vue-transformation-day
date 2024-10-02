@@ -138,96 +138,108 @@
 
         <!-- Flechas de navegación -->
         <div class="arrows">
-        <button class="prev" ref="prevBtn">
-            <!-- Icono de flecha izquierda -->
-            <font-awesome-icon :icon="['fas', 'arrow-left']" />
-        </button>
-        <button class="next" ref="nextBtn">
-            <!-- Icono de flecha derecha -->
-            <font-awesome-icon :icon="['fas', 'arrow-right']" />
-        </button>
-    </div>
-
-        <!-- Barra de tiempo en ejecución -->
-        <!-- <div class="timeRunning" ref="runningTime"></div> -->
+            <button class="prev" ref="prevBtn">
+                <!-- Icono de flecha izquierda -->
+                <font-awesome-icon :icon="['fas', 'arrow-left']" />
+            </button>
+            <button class="next" ref="nextBtn">
+                <!-- Icono de flecha derecha -->
+                <font-awesome-icon :icon="['fas', 'arrow-right']" />
+            </button>
+        </div>
     </div>
 </template>
 
-<script>
+<script setup>
+import { ref, onMounted, onBeforeUnmount } from "vue";
+import { useRouter } from "vue-router";
 import { auth } from "../firebase.js";
 
-export default {
-    name: "PresentationView",
-    mounted() {
-        // Asignar referencias del carrusel
-        this.nextBtn = this.$refs.nextBtn;
-        this.prevBtn = this.$refs.prevBtn;
-        this.carousel = this.$refs.carousel;
-        this.list = this.$refs.list;
-        this.runningTime = this.$refs.runningTime;
+// Referencias del carrusel
+const nextBtn = ref(null);
+const prevBtn = ref(null);
+const carousel = ref(null);
+const list = ref(null);
+const runningTime = ref(null);
+let runTimeOut = null;
 
-        // Configurar eventos de botones del carrusel
-        this.nextBtn.onclick = () => this.showSlider("next");
-        this.prevBtn.onclick = () => this.showSlider("prev");
+// Uso de router
+const router = useRouter();
 
-        // Iniciar la animación de tiempo
-        this.resetTimeAnimation();
+// Función para mostrar el slider
+const showSlider = (type) => {
+    if (!list.value || !carousel.value) return; // Asegúrate de que los elementos existen
 
-        // Configurar cierre de sesión
-        this.setupLogout();
-    },
-    methods: {
-        setupLogout() {
-            const logoutButton = document.getElementById("logout-button");
-            if (logoutButton) {
-                logoutButton.addEventListener("click", (e) => {
-                    e.preventDefault(); // Prevenir la acción del enlace por defecto
-                    auth.signOut()
-                        .then(() => {
-                            console.log("Cierre de sesión exitoso");
-                            this.$router.push("/"); // Redirigir a la ruta de login
-                        })
-                        .catch((error) => {
-                            console.error(
-                                "Error durante el cierre de sesión:",
-                                error.message
-                            );
-                        });
-                });
-            }
-        },
-        resetTimeAnimation() {
-            if (this.runningTime) {
-                this.runningTime.style.animation = "none";
-                this.runningTime.offsetHeight; // trigger reflow
-                this.runningTime.style.animation = null;
-                this.runningTime.style.animation =
-                    "runningTime 7s linear 1 forwards";
-            }
-        },
-        showSlider(type) {
-            let sliderItemsDom = this.list.querySelectorAll(".item");
-            if (sliderItemsDom.length === 0) return; // Asegúrate de que haya elementos
+    let sliderItemsDom = list.value.querySelectorAll(".item");
+    if (sliderItemsDom.length === 0) return;
 
-            if (type === "next") {
-                this.list.appendChild(sliderItemsDom[0]);
-                this.carousel.classList.add("next");
-            } else {
-                this.list.prepend(sliderItemsDom[sliderItemsDom.length - 1]);
-                this.carousel.classList.add("prev");
-            }
+    if (type === "next") {
+        list.value.appendChild(sliderItemsDom[0]);
+        carousel.value.classList.add("next");
+    } else {
+        list.value.prepend(sliderItemsDom[sliderItemsDom.length - 1]);
+        carousel.value.classList.add("prev");
+    }
 
-            clearTimeout(this.runTimeOut);
+    clearTimeout(runTimeOut);
 
-            this.runTimeOut = setTimeout(() => {
-                this.carousel.classList.remove("next");
-                this.carousel.classList.remove("prev");
-            }, 3000); // Cambia este tiempo si es necesario
+    runTimeOut = setTimeout(() => {
+        if (carousel.value) {
+            carousel.value.classList.remove("next");
+            carousel.value.classList.remove("prev");
+        }
+    }, 3000);
 
-            this.resetTimeAnimation(); // Reinicia la animación de tiempo
-        },
-    },
+    resetTimeAnimation();
 };
+
+// Función para resetear la animación de tiempo
+const resetTimeAnimation = () => {
+    if (runningTime.value) {
+        runningTime.value.style.animation = "none";
+        runningTime.value.offsetHeight; // Trigger reflow
+        runningTime.value.style.animation = null;
+        runningTime.value.style.animation = "runningTime 7s linear 1 forwards";
+    }
+};
+
+// Función para configurar el logout
+const setupLogout = () => {
+    const logoutButton = document.getElementById("logout-button");
+    if (logoutButton) {
+        logoutButton.addEventListener("click", async (e) => {
+            e.preventDefault();
+            try {
+                await auth.signOut();
+                console.log("Cierre de sesión exitoso");
+                router.push("/"); // Redirigir a la ruta de login
+            } catch (error) {
+                console.error(
+                    "Error durante el cierre de sesión:",
+                    error.message
+                );
+            }
+        });
+    }
+};
+
+// Limpiar el timeout y referencias al desmontar el componente
+onBeforeUnmount(() => {
+    clearTimeout(runTimeOut);
+    nextBtn.value = null;
+    prevBtn.value = null;
+    carousel.value = null;
+    list.value = null;
+    runningTime.value = null;
+});
+
+// Montar el componente
+onMounted(() => {
+    nextBtn.value.onclick = () => showSlider("next");
+    prevBtn.value.onclick = () => showSlider("prev");
+    resetTimeAnimation();
+    setupLogout();
+});
 </script>
 
 <style scoped>
