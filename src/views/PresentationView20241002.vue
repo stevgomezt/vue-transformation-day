@@ -3,7 +3,7 @@
         <nav class="navbar navbar-expand-lg navbar-light fixed-top">
             <a class="navbar-brand" href="#">
                 <img
-                    src="../assets/logodoblexs.png"
+                    src="../assets/logodoblexs.jpg"
                     class="logo-doble"
                     alt=""
                 />
@@ -44,7 +44,14 @@
                     backgroundImage: `url(${require('../assets/17.jpg')})`,
                 }"
             >
-                <div class="content"></div>
+                <div class="content">
+                    <!-- <div class="title"></div>
+                    <div class="name"></div> -->
+                    <!-- <div class="des">Lorem ipsum dolor sit amet...</div>
+                    <div class="btn">
+                        <button>Ver más</button>
+                    </div> -->
+                </div>
             </div>
             <div
                 class="item"
@@ -58,7 +65,14 @@
                     backgroundImage: `url(${require('../assets/11.jpg')})`,
                 }"
             >
-                <div class="content"></div>
+                <div class="content">
+                    <!-- <div class="title"></div>
+                    <div class="name"></div> -->
+                    <!-- <div class="des">Lorem ipsum dolor sit amet...</div>
+                    <div class="btn">
+                        <button>Ver más</button>
+                    </div> -->
+                </div>
             </div>
             <div
                 class="item"
@@ -66,7 +80,14 @@
                     backgroundImage: `url(${require('../assets/12.jpg')})`,
                 }"
             >
-                <div class="content"></div>
+                <div class="content">
+                    <!-- <div class="title"></div>
+                    <div class="name"></div> -->
+                    <!-- <div class="des">Lorem ipsum dolor sit amet...</div>
+                    <div class="btn">
+                        <button>Ver más</button>
+                    </div> -->
+                </div>
             </div>
             <div
                 class="item"
@@ -74,7 +95,14 @@
                     backgroundImage: `url(${require('../assets/13.jpg')})`,
                 }"
             >
-                <div class="content"></div>
+                <div class="content">
+                    <!-- <div class="title"></div>
+                    <div class="name"></div> -->
+                    <!-- <div class="des">Lorem ipsum dolor sit amet...</div>
+                    <div class="btn">
+                        <button>Ver más</button>
+                    </div> -->
+                </div>
             </div>
             <div
                 class="item"
@@ -82,7 +110,29 @@
                     backgroundImage: `url(${require('../assets/14.jpg')})`,
                 }"
             >
-                <div class="content"></div>
+                <div class="content">
+                    <!-- <div class="title"></div>
+                    <div class="name"></div> -->
+                    <!-- <div class="des">Lorem ipsum dolor sit amet...</div>
+                    <div class="btn">
+                        <button>Ver más</button>
+                    </div> -->
+                </div>
+            </div>
+            <div
+                class="item"
+                :style="{
+                    backgroundImage: `url(${require('../assets/15.jpg')})`,
+                }"
+            >
+                <div class="content">
+                    <!-- <div class="title"></div>
+                    <div class="name"></div> -->
+                    <!-- <div class="des">Lorem ipsum dolor sit amet...</div>
+                    <div class="btn">
+                        <button>Ver más</button>
+                    </div> -->
+                </div>
             </div>
             <div
                 class="item"
@@ -90,7 +140,14 @@
                     backgroundImage: `url(${require('../assets/16.jpg')})`,
                 }"
             >
-                <div class="content"></div>
+                <div class="content">
+                    <!-- <div class="title"></div>
+                    <div class="name"></div> -->
+                    <!-- <div class="des">Lorem ipsum dolor sit amet...</div>
+                    <div class="btn">
+                        <button>Ver más</button>
+                    </div> -->
+                </div>
             </div>
         </div>
 
