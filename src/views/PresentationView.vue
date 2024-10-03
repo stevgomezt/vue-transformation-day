@@ -41,11 +41,9 @@
             <div
                 class="item"
                 :style="{
-                    backgroundImage: `url(${require('../assets/17.jpg')})`,
+                    backgroundImage: `url(${require('../assets/14.jpg')})`,
                 }"
-            >
-                <div class="content"></div>
-            </div>
+            ></div>
             <div
                 class="item"
                 :style="{
@@ -72,22 +70,6 @@
                 class="item"
                 :style="{
                     backgroundImage: `url(${require('../assets/13.jpg')})`,
-                }"
-            >
-                <div class="content"></div>
-            </div>
-            <div
-                class="item"
-                :style="{
-                    backgroundImage: `url(${require('../assets/14.jpg')})`,
-                }"
-            >
-                <div class="content"></div>
-            </div>
-            <div
-                class="item"
-                :style="{
-                    backgroundImage: `url(${require('../assets/16.jpg')})`,
                 }"
             >
                 <div class="content"></div>
